@@ -16,7 +16,7 @@ namespace ProyectoAdo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form03EliminarEnfermo());
+            Application.Run(new Form07ParametrosSalida());
         }
     }
 }

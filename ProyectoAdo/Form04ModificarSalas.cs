@@ -30,7 +30,19 @@ namespace ProyectoAdo
         private void CargarSalas()
         {
             this.lstSalas.Items.Clear();
-            this.com.Connection = this.cn;
+            String consulta = "UPDATE SALA SET NOMBRE = @NEWNAME WHERE NOMBRE = @OLDNAME";
+            String newname = this.txtNombre.Text;
+            String oldname = this.lstSalas.SelectedItem.ToString();
+            this.com.Parameters.AddWithValue("@NEWNAME", newname);
+            this.com.Parameters.AddWithValue("@OLDNAME", oldname);
+            this.com.CommandType = CommandType.Text;
+            this.com.CommandText = consulta;
+            this.cn.Open();
+            int update = this.com.ExecuteNonQuery();
+            this.cn.Close();
+            this.com.Parameters.Clear();
+            this.CargarSalas();
+        
         }
     }
 }
